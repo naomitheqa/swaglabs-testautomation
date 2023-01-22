@@ -29,6 +29,6 @@ Then("I should be logged in", async function () {
     cart_element = await driver.findElements(By.id('shopping_cart_container'));
     assert.strictEqual(cart_element.length, 1);
   } catch (err) {
-    console.log("Something went wrong...");
+    assert.fail(`${err}`);
   }
 });

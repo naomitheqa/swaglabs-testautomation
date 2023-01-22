@@ -1,5 +1,5 @@
 const { Builder, By, Key} = require("selenium-webdriver");
-const { Before, After, Given, When, Then } = require("@cucumber/cucumber");
+const { Before, After, Given, When, Then} = require("@cucumber/cucumber");
 let driver = new Builder().forBrowser("chrome").build();
 var assert = require("assert");
 let globalPass = "secret_sauce";
@@ -12,13 +12,13 @@ After(async function () {
   await driver.quit();
 });
 
-Given(
-  "I enter a valid user name and password",
-  async function () {
-    await driver.findElement(By.id('user-name')).sendKeys('standard_user');
-    await driver.findElement(By.id('password')).sendKeys(globalPass);
-  }
-);
+Given("I enter standard_user as the user name", async function () {
+  await driver.findElement(By.id("user-name")).sendKeys("standard_user");
+});
+
+Given("I enter the correct password", async function () {
+  await driver.findElement(By.id("password")).sendKeys(globalPass);
+});
 
 When("I click login", async function () {
   await driver.findElement(By.id('login-button')).click();

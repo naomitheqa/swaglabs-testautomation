@@ -1,10 +1,13 @@
-const { Builder, By, Key} = require("selenium-webdriver");
+const { By, Key} = require("selenium-webdriver");
 const { Before, After, Given, When, Then} = require("@cucumber/cucumber");
-let driver = new Builder().forBrowser("chrome").build();
+const { initDriver } = require("../../util/init-driver");
 var assert = require("assert");
+
 let globalPass = "secret_sauce";
+let driver;
 
 Before(async function () {
+  driver = initDriver();
   await driver.get("https://www.saucedemo.com/");
 });
 

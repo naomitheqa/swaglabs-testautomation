@@ -6,4 +6,3 @@ Scenario: Standard_user successful login
     And I enter the correct password
     When I click login
     Then I should be logged in
-
